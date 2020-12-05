@@ -16,7 +16,7 @@ Pod::Spec.new do |spec|
   #
 
   spec.name         = "Omise"
-  spec.version      = "1.1"
+  spec.version      = "1.0"
   spec.summary      = "Omise SDK for Cocoapods"
 
   # This description is used to generate tags and improve search results.
@@ -26,7 +26,7 @@ Pod::Spec.new do |spec|
   #   * Finally, don't worry about the indent, CocoaPods strips it!
   spec.description  = "Omise SDK for iOS. Version for CocoaPods"
 
-  spec.homepage     = "https://www.omise.co"
+  spec.homepage     = "http://www.omise.com"
   # spec.screenshots  = "www.example.com/screenshots_1.gif", "www.example.com/screenshots_2.gif"
 
 
@@ -77,8 +77,8 @@ Pod::Spec.new do |spec|
   #  Specify the location from where the source should be retrieved.
   #  Supports git, hg, bzr, svn and HTTP.
   #
-  spec.platform     = :ios, '10.0'
-  spec.source       = { :git => "https://github.com/wiosm/OmiseSDK.git", :tag => spec.version.to_s }
+
+  spec.source       = { :git => "https://github.com/wiosm/OmiseSDK.git", :tag => "#{spec.version}" }
 
 
   # ――― Source Code ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
@@ -89,6 +89,8 @@ Pod::Spec.new do |spec|
   #  Not including the public_header_files will make all headers public.
   #
 
+  spec.source_files  = "Classes", "Classes/**/*.{h,m}"
+  spec.exclude_files = "Classes/Exclude"
   spec.vendored_frameworks = 'OmiseSDK.framework'
   spec.xcconfig = { 'FRAMEWORK_SEARCH_PATHS' => '$(inherited)', 'CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES' => 'YES' }
 
