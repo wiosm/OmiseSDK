@@ -16,7 +16,7 @@ Pod::Spec.new do |spec|
   #
 
   spec.name         = "Omise"
-  spec.version      = "1.1.2"
+  spec.version      = "1.1.3"
   spec.summary      = "Omise SDK for Cocoapods"
 
   # This description is used to generate tags and improve search results.
@@ -91,7 +91,10 @@ Pod::Spec.new do |spec|
 
   spec.vendored_frameworks = 'OmiseSDK.framework'
   spec.xcconfig = { 'FRAMEWORK_SEARCH_PATHS' => '$(inherited)', 'CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES' => 'YES' }
-
+  spec.pod_target_xcconfig = {
+    'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'arm64'
+  }
+  spec.user_target_xcconfig = { 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'arm64' }
   # spec.public_header_files = "Classes/**/*.h"
 
 
