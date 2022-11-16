@@ -1,11 +1,12 @@
 // swift-interface-format-version: 1.0
-// swift-compiler-version: Apple Swift version 5.3.1 (swiftlang-1200.0.41 clang-1200.0.32.8)
+// swift-compiler-version: Apple Swift version 5.6.1 (swiftlang-5.6.0.323.66 clang-1316.0.20.12)
 // swift-module-flags: -target armv7-apple-ios10.0 -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name OmiseSDK
 import Foundation
 @_exported import OmiseSDK
 import Swift
 import UIKit
 import WebKit
+import _Concurrency
 import os.log
 import os
 @available(*, deprecated, renamed: "Token", message: "Use the new `Token` data type instead. This class will be removed in the future released")
@@ -22,7 +23,7 @@ public enum OmiseTokenRequestResult {
 }
 @objc @available(*, deprecated, renamed: "Request", message: "Use the new `Request<Token>` type. This class will be removed in the future released")
 public class OmiseTokenRequest : ObjectiveC.NSObject {
-  public typealias Callback = (OmiseSDK.OmiseTokenRequestResult) -> ()
+  public typealias Callback = (OmiseSDK.OmiseTokenRequestResult) -> Swift.Void
   @objc public var name: Swift.String {
     @objc get
   }
@@ -46,7 +47,6 @@ public class OmiseTokenRequest : ObjectiveC.NSObject {
   }
   @objc public init(name: Swift.String, number: Swift.String, expirationMonth: Swift.Int, expirationYear: Swift.Int, securityCode: Swift.String, city: Swift.String? = nil, postalCode: Swift.String? = nil)
   @objc deinit
-  @objc override dynamic public init()
 }
 @objc public protocol OMSSourceRequestDelegate {
   @objc func sourceRequest(_ request: OmiseSDK.__OMSSourceRequest, didSucceedWithSource source: OmiseSDK.__OmiseSource)
@@ -64,7 +64,6 @@ public class OmiseTokenRequest : ObjectiveC.NSObject {
   }
   @objc public init(paymentInformation: OmiseSDK.__SourcePaymentInformation, amount: Swift.Int64, currencyCode: Swift.String)
   @objc deinit
-  @objc override dynamic public init()
 }
 @objc @available(*, deprecated, renamed: "Client", message: "Use the new `Client` type. This class will be removed in the future released")
 public class OmiseSDKClient : ObjectiveC.NSObject {
@@ -79,45 +78,44 @@ public class OmiseSDKClient : ObjectiveC.NSObject {
   public func send(_ request: OmiseSDK.OmiseTokenRequest, callback: OmiseSDK.OmiseTokenRequest.Callback?)
   public func send(_ request: OmiseSDK.OmiseTokenRequest, delegate: OmiseSDK.OmiseTokenRequestDelegate?)
   @objc deinit
-  @objc override dynamic public init()
 }
 @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @available(*, deprecated, renamed: "OmiseTextField", message: "Use the new `OMSOmiseTextField` data type instead. This class will be removed in the future released")
-@objc(OmiseTextField) public class __OmiseTextField : OmiseSDK.OmiseTextField {
+@objc(OmiseTextField) @_Concurrency.MainActor(unsafe) public class __OmiseTextField : OmiseSDK.OmiseTextField {
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame: CoreGraphics.CGRect)
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
   @objc deinit
-  @objc override dynamic public init(frame: CoreGraphics.CGRect)
-  @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
 }
 @_inheritsConvenienceInitializers @available(*, deprecated, renamed: "CardCVVTextField", message: "Use the new `OMSCardCVVTextField` data type instead. This class will be removed in the future released")
-@objc(CardCVVTextField) public class __CardCVVTextField : OmiseSDK.CardCVVTextField {
-  @objc deinit
-  @objc override dynamic public init(frame: CoreGraphics.CGRect)
-  @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
+@objc(CardCVVTextField) @_Concurrency.MainActor(unsafe) public class __CardCVVTextField : OmiseSDK.CardCVVTextField {
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame: CoreGraphics.CGRect)
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
   @objc override dynamic public init()
+  @objc deinit
 }
 @_inheritsConvenienceInitializers @available(*, deprecated, renamed: "CardExpiryDatePicker", message: "Use the new `OMSCardExpiryDatePicker` data type instead. This class will be removed in the future released")
-@objc(CardExpiryDatePicker) public class __CardExpiryDatePicker : OmiseSDK.CardExpiryDatePicker {
+@objc(CardExpiryDatePicker) @_Concurrency.MainActor(unsafe) public class __CardExpiryDatePicker : OmiseSDK.CardExpiryDatePicker {
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame: CoreGraphics.CGRect)
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
   @objc deinit
-  @objc override dynamic public init(frame: CoreGraphics.CGRect)
-  @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
 }
 @_inheritsConvenienceInitializers @available(*, deprecated, renamed: "CardExpiryDateTextField", message: "Use the new `OMSCardExpiryDateTextField` data type instead. This class will be removed in the future released")
-@objc(CardExpiryDateTextField) public class __CardExpiryDateTextField : OmiseSDK.CardExpiryDateTextField {
-  @objc deinit
+@objc(CardExpiryDateTextField) @_Concurrency.MainActor(unsafe) public class __CardExpiryDateTextField : OmiseSDK.CardExpiryDateTextField {
   @objc override dynamic public init()
-  @objc override dynamic public init(frame: CoreGraphics.CGRect)
-  @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame: CoreGraphics.CGRect)
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
+  @objc deinit
 }
 @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @available(*, deprecated, renamed: "CardNumberTextField", message: "Use the new `OMSCardNumberTextField` data type instead. This class will be removed in the future released")
-@objc(CardNumberTextField) public class __CardNumberTextField : OmiseSDK.CardNumberTextField {
+@objc(CardNumberTextField) @_Concurrency.MainActor(unsafe) public class __CardNumberTextField : OmiseSDK.CardNumberTextField {
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame: CoreGraphics.CGRect)
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
   @objc deinit
-  @objc override dynamic public init(frame: CoreGraphics.CGRect)
-  @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
 }
 @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @available(*, deprecated, renamed: "CardNameTextField", message: "Use the new `OMSCardNameTextField` data type instead. This class will be removed in the future released")
-@objc(CardNameTextField) public class __CardNameTextField : OmiseSDK.CardNameTextField {
+@objc(CardNameTextField) @_Concurrency.MainActor(unsafe) public class __CardNameTextField : OmiseSDK.CardNameTextField {
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame: CoreGraphics.CGRect)
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
   @objc deinit
-  @objc override dynamic public init(frame: CoreGraphics.CGRect)
-  @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
 }
 public struct PAN {
   public var isValid: Swift.Bool {
@@ -138,7 +136,7 @@ public struct PAN {
   public init(_ pan: Swift.String)
   public static func suggestedSpaceFormattedIndexesForPANPrefix(_ panPrefix: Swift.String) -> Foundation.IndexSet
 }
-extension PAN : Swift.CustomDebugStringConvertible, Swift.CustomStringConvertible {
+extension OmiseSDK.PAN : Swift.CustomDebugStringConvertible, Swift.CustomStringConvertible {
   public var debugDescription: Swift.String {
     get
   }
@@ -151,19 +149,19 @@ public enum ErrorUserInfoKey : Swift.String, Swift.CodingKey {
   case location
   case code
   case message
-  public typealias RawValue = Swift.String
   public init?(rawValue: Swift.String)
+  public init?(stringValue: Swift.String)
+  public init?(intValue: Swift.Int)
+  public typealias RawValue = Swift.String
+  public var intValue: Swift.Int? {
+    get
+  }
   public var rawValue: Swift.String {
     get
   }
   public var stringValue: Swift.String {
     get
   }
-  public init?(stringValue: Swift.String)
-  public var intValue: Swift.Int? {
-    get
-  }
-  public init?(intValue: Swift.Int)
 }
 public enum OmiseError : Foundation.CustomNSError, Foundation.LocalizedError, Swift.Decodable {
   public static let errorDomain: Swift.String
@@ -181,11 +179,11 @@ public enum OmiseError : Foundation.CustomNSError, Foundation.LocalizedError, Sw
       case emptyCardHolderName
       case unsupportedBrand
       case other(Swift.String)
+      public func hash(into hasher: inout Swift.Hasher)
+      public static func == (a: OmiseSDK.OmiseError.APIErrorCode.InvalidCardReason, b: OmiseSDK.OmiseError.APIErrorCode.InvalidCardReason) -> Swift.Bool
       public var hashValue: Swift.Int {
         get
       }
-      public func hash(into hasher: inout Swift.Hasher)
-      public static func == (a: OmiseSDK.OmiseError.APIErrorCode.InvalidCardReason, b: OmiseSDK.OmiseError.APIErrorCode.InvalidCardReason) -> Swift.Bool
     }
     public enum BadRequestReason : Swift.Hashable {
       case amountIsLessThanValidAmount(validAmount: Swift.Int64?, currency: OmiseSDK.Currency?)
@@ -199,19 +197,19 @@ public enum OmiseError : Foundation.CustomNSError, Foundation.LocalizedError, Sw
       case typeNotSupported
       case currencyNotSupported
       case other(Swift.String)
+      public func hash(into hasher: inout Swift.Hasher)
+      public static func == (a: OmiseSDK.OmiseError.APIErrorCode.BadRequestReason, b: OmiseSDK.OmiseError.APIErrorCode.BadRequestReason) -> Swift.Bool
       public var hashValue: Swift.Int {
         get
       }
-      public func hash(into hasher: inout Swift.Hasher)
-      public static func == (a: OmiseSDK.OmiseError.APIErrorCode.BadRequestReason, b: OmiseSDK.OmiseError.APIErrorCode.BadRequestReason) -> Swift.Bool
     }
   }
   public enum UnexpectedError {
     case noErrorNorResponse
     case httpErrorWithNoData
     case httpErrorResponseWithInvalidData
-    case httpSucceessWithNoData
-    case httpSucceessWithInvalidData
+    case httpSuccessWithNoData
+    case httpSuccessWithInvalidData
     case unrecognizedHTTPStatusCode(code: Swift.Int)
     case other(Swift.String)
   }
@@ -226,16 +224,16 @@ public enum OmiseError : Foundation.CustomNSError, Foundation.LocalizedError, Sw
   }
   public init(from decoder: Swift.Decoder) throws
 }
-extension OmiseError.APIErrorCode : Swift.Decodable {
+extension OmiseSDK.OmiseError.APIErrorCode : Swift.Decodable {
   public init(from decoder: Swift.Decoder) throws
 }
-extension OmiseError.APIErrorCode.InvalidCardReason : Swift.Decodable {
+extension OmiseSDK.OmiseError.APIErrorCode.InvalidCardReason : Swift.Decodable {
   public init(from decoder: Swift.Decoder) throws
 }
-extension OmiseError.APIErrorCode.BadRequestReason : Swift.Decodable {
+extension OmiseSDK.OmiseError.APIErrorCode.BadRequestReason : Swift.Decodable {
   public init(from decoder: Swift.Decoder) throws
 }
-extension UIColor {
+extension UIKit.UIColor {
   public static let background: UIKit.UIColor
   public static let formAccessoryBarTintColor: UIKit.UIColor
   public static let selectedCellBackgroundColor: UIKit.UIColor
@@ -275,6 +273,7 @@ public struct CreateSourceParameter : Swift.Encodable {
 public enum Flow : Swift.RawRepresentable, Swift.Decodable, Swift.Equatable {
   case redirect
   case offline
+  case appRedirect
   case other(Swift.String)
   public typealias RawValue = Swift.String
   public var rawValue: Swift.String {
@@ -291,44 +290,56 @@ public enum OmiseTextFieldValidationError : Swift.Error {
   case emptyText
   case invalidData
   public static func == (a: OmiseSDK.OmiseTextFieldValidationError, b: OmiseSDK.OmiseTextFieldValidationError) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
   public var hashValue: Swift.Int {
     get
   }
-  public func hash(into hasher: inout Swift.Hasher)
 }
-@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @objc(OMSOmiseTextField) @IBDesignable public class OmiseTextField : UIKit.UITextField {
-  public var style: OmiseSDK.TextFieldStyle {
+@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @IBDesignable @objc(OMSOmiseTextField) @_Concurrency.MainActor(unsafe) public class OmiseTextField : UIKit.UITextField {
+  @_Concurrency.MainActor(unsafe) public var style: OmiseSDK.TextFieldStyle {
     get
     set
   }
-  @objc override dynamic public var placeholder: Swift.String? {
-    @objc get
-    @objc set
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public var placeholder: Swift.String? {
+    @_Concurrency.MainActor(unsafe) @objc get
+    @_Concurrency.MainActor(unsafe) @objc set
   }
-  public var isValid: Swift.Bool {
+  @_Concurrency.MainActor(unsafe) public var isValid: Swift.Bool {
     get
   }
-  @objc override dynamic public var text: Swift.String? {
-    @objc get
-    @objc set
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public var text: Swift.String? {
+    @_Concurrency.MainActor(unsafe) @objc get
+    @_Concurrency.MainActor(unsafe) @objc set
   }
-  @objc override dynamic public var textColor: UIKit.UIColor? {
-    @objc get
-    @objc set
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public var textColor: UIKit.UIColor? {
+    @_Concurrency.MainActor(unsafe) @objc get
+    @_Concurrency.MainActor(unsafe) @objc set
   }
-  @objc override dynamic public init(frame: CoreGraphics.CGRect)
-  @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
-  @objc public func validate() throws
-  @objc override dynamic public func traitCollectionDidChange(_ previousTraitCollection: UIKit.UITraitCollection?)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame: CoreGraphics.CGRect)
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
+  @objc @_Concurrency.MainActor(unsafe) public func validate() throws
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func traitCollectionDidChange(_ previousTraitCollection: UIKit.UITraitCollection?)
   @objc deinit
 }
-extension OmiseTextField {
-  @objc override dynamic public func borderRect(forBounds bounds: CoreGraphics.CGRect) -> CoreGraphics.CGRect
-  @objc override dynamic public func textRect(forBounds bounds: CoreGraphics.CGRect) -> CoreGraphics.CGRect
-  @objc override dynamic open func editingRect(forBounds bounds: CoreGraphics.CGRect) -> CoreGraphics.CGRect
-  @objc override dynamic open func clearButtonRect(forBounds bounds: CoreGraphics.CGRect) -> CoreGraphics.CGRect
-  @objc override dynamic public func rightViewRect(forBounds bounds: CoreGraphics.CGRect) -> CoreGraphics.CGRect
-  @objc override dynamic public func leftViewRect(forBounds bounds: CoreGraphics.CGRect) -> CoreGraphics.CGRect
+extension OmiseSDK.OmiseTextField {
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func borderRect(forBounds bounds: CoreGraphics.CGRect) -> CoreGraphics.CGRect
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func textRect(forBounds bounds: CoreGraphics.CGRect) -> CoreGraphics.CGRect
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open func editingRect(forBounds bounds: CoreGraphics.CGRect) -> CoreGraphics.CGRect
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open func clearButtonRect(forBounds bounds: CoreGraphics.CGRect) -> CoreGraphics.CGRect
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func rightViewRect(forBounds bounds: CoreGraphics.CGRect) -> CoreGraphics.CGRect
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func leftViewRect(forBounds bounds: CoreGraphics.CGRect) -> CoreGraphics.CGRect
+}
+@_inheritsConvenienceInitializers @_Concurrency.MainActor(unsafe) public class AdaptableDynamicTableViewController<Element> : UIKit.UITableViewController where Element : Swift.Equatable {
+  @_Concurrency.MainActor(unsafe) public var showingValues: [Element] {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func tableView(_ tableView: UIKit.UITableView, numberOfRowsInSection section: Swift.Int) -> Swift.Int
+  @_Concurrency.MainActor(unsafe) public func element(forUIIndexPath indexPath: Foundation.IndexPath) -> Element
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(style: UIKit.UITableView.Style)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(nibName nibNameOrNil: Swift.String?, bundle nibBundleOrNil: Foundation.Bundle?)
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder: Foundation.NSCoder)
+  @objc deinit
 }
 @_hasMissingDesignatedInitializers @objc(OMSToken) public class __OmiseToken : ObjectiveC.NSObject {
   @objc public var tokenID: Swift.String? {
@@ -360,7 +371,6 @@ extension OmiseTextField {
     @objc get
     @objc set
   }
-  @objc override dynamic public init()
   @objc deinit
 }
 public protocol CreditCardFormViewControllerDelegate : AnyObject {
@@ -380,7 +390,7 @@ public protocol CreditCardFormDelegate : OmiseSDK.CreditCardFormViewControllerDe
 @available(*, deprecated, renamed: "OMSCreditCardFormViewControllerDelegate", message: "This delegate name is deprecated. Please use the new name of `OMSCreditCardFormViewControllerDelegate`")
 @objc public protocol OMSCreditCardFormDelegate : OmiseSDK.OMSCreditCardFormViewControllerDelegate {
 }
-@objc public protocol OMSCreditCardFormViewControllerDelegate : AnyObject {
+@objc public protocol OMSCreditCardFormViewControllerDelegate {
   @objc func creditCardFormViewController(_ controller: OmiseSDK.CreditCardFormViewController, didSucceedWithToken token: OmiseSDK.__OmiseToken)
   @objc func creditCardFormViewController(_ controller: OmiseSDK.CreditCardFormViewController, didFailWithError error: Foundation.NSError)
   @objc optional func creditCardFormViewControllerDidCancel(_ controller: OmiseSDK.CreditCardFormViewController)
@@ -391,42 +401,42 @@ public protocol CreditCardFormDelegate : OmiseSDK.CreditCardFormViewControllerDe
 }
 @available(*, deprecated, renamed: "CreditCardFormViewController")
 public typealias CreditCardFormController = OmiseSDK.CreditCardFormViewController
-@_inheritsConvenienceInitializers @objc(OMSCreditCardFormViewController) public class CreditCardFormViewController : UIKit.UIViewController, OmiseSDK.PaymentChooserUI {
-  @objc public var publicKey: Swift.String?
-  weak public var delegate: OmiseSDK.CreditCardFormViewControllerDelegate?
-  @objc(delegate) weak public var __delegate: OmiseSDK.OMSCreditCardFormViewControllerDelegate?
-  @objc public var handleErrors: Swift.Bool
-  @IBInspectable @objc public var preferredPrimaryColor: UIKit.UIColor? {
+@_inheritsConvenienceInitializers @objc(OMSCreditCardFormViewController) @_Concurrency.MainActor(unsafe) public class CreditCardFormViewController : UIKit.UIViewController, OmiseSDK.PaymentChooserUI {
+  @objc @_Concurrency.MainActor(unsafe) public var publicKey: Swift.String?
+  @_Concurrency.MainActor(unsafe) weak public var delegate: OmiseSDK.CreditCardFormViewControllerDelegate?
+  @objc(delegate) @_Concurrency.MainActor(unsafe) weak public var __delegate: OmiseSDK.OMSCreditCardFormViewControllerDelegate?
+  @objc @_Concurrency.MainActor(unsafe) public var handleErrors: Swift.Bool
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) public var preferredPrimaryColor: UIKit.UIColor? {
     @objc get
     @objc set
   }
-  @IBInspectable @objc public var preferredSecondaryColor: UIKit.UIColor? {
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) public var preferredSecondaryColor: UIKit.UIColor? {
     @objc get
     @objc set
   }
-  @IBInspectable @objc public var errorMessageTextColor: UIKit.UIColor! {
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) public var errorMessageTextColor: UIKit.UIColor! {
     @objc get
     @objc set
   }
-  @objc public static let defaultErrorMessageTextColor: UIKit.UIColor
+  @objc @_Concurrency.MainActor(unsafe) public static let defaultErrorMessageTextColor: UIKit.UIColor
   @available(*, unavailable, message: "Built in support for Card.ios was removed. You can implement it in your app and call the setCreditCardInformation(number:name:expiration:) method")
-  @objc public var cardIOEnabled: Swift.Bool
-  @objc(creditCardFormViewControllerWithPublicKey:) public static func makeCreditCardFormViewController(withPublicKey publicKey: Swift.String) -> OmiseSDK.CreditCardFormViewController
+  @objc @_Concurrency.MainActor(unsafe) public var cardIOEnabled: Swift.Bool
+  @objc(creditCardFormViewControllerWithPublicKey:) @_Concurrency.MainActor(unsafe) public static func makeCreditCardFormViewController(withPublicKey publicKey: Swift.String) -> OmiseSDK.CreditCardFormViewController
   @available(*, deprecated, renamed: "makeCreditCardFormViewController(withPublicKey:)", message: "Please use the new method that confrom to Objective-C convention +[OMSCreditCardFormViewController creditCardFormViewControllerWithPublicKey:] as of this method will be removed in the future release.")
-  @objc(makeCreditCardFormWithPublicKey:) public static func __makeCreditCardForm(withPublicKey publicKey: Swift.String) -> OmiseSDK.CreditCardFormViewController
-  public func setCreditCardInformationWith(number: Swift.String?, name: Swift.String?, expiration: (month: Swift.Int, year: Swift.Int)?)
-  @objc(setCreditCardInformationWithNumber:name:expirationMonth:expirationYear:) public func __setCreditCardInformation(number: Swift.String, name: Swift.String, expirationMonth: Swift.Int, expirationYear: Swift.Int)
-  @objc override dynamic public func loadView()
-  @objc override dynamic public func viewDidLoad()
-  @objc override dynamic public func viewWillLayoutSubviews()
-  @objc override dynamic public func viewDidAppear(_ animated: Swift.Bool)
-  @objc override dynamic public func viewDidDisappear(_ animated: Swift.Bool)
-  @objc override dynamic public func traitCollectionDidChange(_ previousTraitCollection: UIKit.UITraitCollection?)
+  @objc(makeCreditCardFormWithPublicKey:) @_Concurrency.MainActor(unsafe) public static func __makeCreditCardForm(withPublicKey publicKey: Swift.String) -> OmiseSDK.CreditCardFormViewController
+  @_Concurrency.MainActor(unsafe) public func setCreditCardInformationWith(number: Swift.String?, name: Swift.String?, expiration: (month: Swift.Int, year: Swift.Int)?)
+  @objc(setCreditCardInformationWithNumber:name:expirationMonth:expirationYear:) @_Concurrency.MainActor(unsafe) public func __setCreditCardInformation(number: Swift.String, name: Swift.String, expirationMonth: Swift.Int, expirationYear: Swift.Int)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func loadView()
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func viewDidLoad()
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func viewWillLayoutSubviews()
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func viewDidAppear(_ animated: Swift.Bool)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func viewDidDisappear(_ animated: Swift.Bool)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func traitCollectionDidChange(_ previousTraitCollection: UIKit.UITraitCollection?)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(nibName nibNameOrNil: Swift.String?, bundle nibBundleOrNil: Foundation.Bundle?)
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder: Foundation.NSCoder)
   @objc deinit
-  @objc override dynamic public init(nibName nibNameOrNil: Swift.String?, bundle nibBundleOrNil: Foundation.Bundle?)
-  @objc required dynamic public init?(coder: Foundation.NSCoder)
 }
-extension CreditCardFormViewController {
+extension OmiseSDK.CreditCardFormViewController {
   @objc override dynamic public func accessibilityPerformMagicTap() -> Swift.Bool
   @objc override dynamic public func accessibilityPerformEscape() -> Swift.Bool
 }
@@ -473,7 +483,6 @@ extension CreditCardFormViewController {
   @objc public var created: Foundation.Date? {
     @objc get
   }
-  @objc override dynamic public init()
   @objc deinit
 }
 public struct Capability : OmiseSDK.Object {
@@ -488,13 +497,14 @@ public struct Capability : OmiseSDK.Object {
     get
   }
 }
-extension Capability {
+extension OmiseSDK.Capability {
   public static func ~= (lhs: OmiseSDK.Capability, rhs: OmiseSDK.CreateSourceParameter) -> Swift.Bool
 }
-extension Capability {
+extension OmiseSDK.Capability {
   public struct Backend : Swift.Codable, Swift.Equatable {
     public let payment: OmiseSDK.Capability.Backend.Payment
     public let supportedCurrencies: Swift.Set<OmiseSDK.Currency>
+    public let banks: [OmiseSDK.Capability.Backend.Bank]?
     public enum Payment : Swift.Equatable {
       case card(Swift.Set<OmiseSDK.CardBrand>)
       case installment(OmiseSDK.PaymentInformation.Installment.Brand, availableNumberOfTerms: Foundation.IndexSet)
@@ -502,26 +512,52 @@ extension Capability {
       case mobileBanking(OmiseSDK.PaymentInformation.MobileBanking)
       case billPayment(OmiseSDK.PaymentInformation.BillPayment)
       case alipay
+      case alipayCN
+      case alipayHK
+      case dana
+      case gcash
+      case kakaoPay
+      case touchNGoAlipayPlus
+      case touchNGo
       case promptpay
       case paynow
       case truemoney
       case points(OmiseSDK.PaymentInformation.Points)
       case eContext
+      case fpx
+      case rabbitLinepay
+      case ocbcPao
+      case grabPay
+      case grabPayRms
+      case boost
+      case shopeePay
+      case shopeePayJumpApp
+      case maybankQRPay
+      case duitNowQR
+      case duitNowOBW
       case unknownSource(Swift.String, configurations: [Swift.String : Any])
+    }
+    public struct Bank : Swift.Codable, Swift.Equatable {
+      public let name: Swift.String
+      public let code: Swift.String
+      public let isActive: Swift.Bool
+      public static func == (a: OmiseSDK.Capability.Backend.Bank, b: OmiseSDK.Capability.Backend.Bank) -> Swift.Bool
+      public func encode(to encoder: Swift.Encoder) throws
+      public init(from decoder: Swift.Decoder) throws
     }
     public static func == (a: OmiseSDK.Capability.Backend, b: OmiseSDK.Capability.Backend) -> Swift.Bool
   }
 }
-extension Capability : Swift.Codable {
+extension OmiseSDK.Capability : Swift.Codable {
 }
-extension Capability.Backend.Payment {
+extension OmiseSDK.Capability.Backend.Payment {
   public static func == (lhs: OmiseSDK.Capability.Backend.Payment, rhs: OmiseSDK.Capability.Backend.Payment) -> Swift.Bool
 }
-extension Capability {
+extension OmiseSDK.Capability {
   public init(from decoder: Swift.Decoder) throws
   public func encode(to encoder: Swift.Encoder) throws
 }
-extension Capability.Backend {
+extension OmiseSDK.Capability.Backend {
   public init(from decoder: Swift.Decoder) throws
   public func encode(to encoder: Swift.Encoder) throws
 }
@@ -530,19 +566,19 @@ extension Capability.Backend {
   public func resume()
   @objc deinit
 }
-@_inheritsConvenienceInitializers public class AdaptableStaticTableViewController<Element> : UIKit.UITableViewController where Element : Swift.CaseIterable, Element : Swift.Equatable {
-  public var showingValues: [Element] {
+@_inheritsConvenienceInitializers @_Concurrency.MainActor(unsafe) public class AdaptableStaticTableViewController<Element> : UIKit.UITableViewController where Element : Swift.CaseIterable, Element : Swift.Equatable {
+  @_Concurrency.MainActor(unsafe) public var showingValues: [Element] {
     get
     set
   }
-  @objc override dynamic public func tableView(_ tableView: UIKit.UITableView, numberOfRowsInSection section: Swift.Int) -> Swift.Int
-  @objc override dynamic public func tableView(_ tableView: UIKit.UITableView, cellForRowAt indexPath: Foundation.IndexPath) -> UIKit.UITableViewCell
-  public func calculateStaticIndexPath(fromUIIndexPath indexPath: Foundation.IndexPath) -> Foundation.IndexPath
-  public func staticIndexPath(forValue value: Element) -> Foundation.IndexPath
-  public func element(forUIIndexPath indexPath: Foundation.IndexPath) -> Element
-  @objc override dynamic public init(style: UIKit.UITableView.Style)
-  @objc override dynamic public init(nibName nibNameOrNil: Swift.String?, bundle nibBundleOrNil: Foundation.Bundle?)
-  @objc required dynamic public init?(coder: Foundation.NSCoder)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func tableView(_ tableView: UIKit.UITableView, numberOfRowsInSection section: Swift.Int) -> Swift.Int
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func tableView(_ tableView: UIKit.UITableView, cellForRowAt indexPath: Foundation.IndexPath) -> UIKit.UITableViewCell
+  @_Concurrency.MainActor(unsafe) public func calculateStaticIndexPath(fromUIIndexPath indexPath: Foundation.IndexPath) -> Foundation.IndexPath
+  @_Concurrency.MainActor(unsafe) public func staticIndexPath(forValue value: Element) -> Foundation.IndexPath
+  @_Concurrency.MainActor(unsafe) public func element(forUIIndexPath indexPath: Foundation.IndexPath) -> Element
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(style: UIKit.UITableView.Style)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(nibName nibNameOrNil: Swift.String?, bundle nibBundleOrNil: Foundation.Bundle?)
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder: Foundation.NSCoder)
   @objc deinit
 }
 @objc public protocol OMSTokenRequestDelegate {
@@ -573,72 +609,69 @@ extension Capability.Backend {
   }
   @objc public init(name: Swift.String, number: Swift.String, expirationMonth: Swift.Int, expirationYear: Swift.Int, securityCode: Swift.String, city: Swift.String? = nil, postalCode: Swift.String? = nil)
   @objc deinit
-  @objc override dynamic public init()
 }
-@_inheritsConvenienceInitializers @objc(OMSCardExpiryDateTextField) @IBDesignable public class CardExpiryDateTextField : OmiseSDK.OmiseTextField {
-  public var selectedMonth: Swift.Int? {
+@_inheritsConvenienceInitializers @IBDesignable @objc(OMSCardExpiryDateTextField) @_Concurrency.MainActor(unsafe) public class CardExpiryDateTextField : OmiseSDK.OmiseTextField {
+  @_Concurrency.MainActor(unsafe) public var selectedMonth: Swift.Int? {
     get
   }
-  @objc(selectedMonth) public var __selectedMonth: Swift.Int {
+  @objc(selectedMonth) @_Concurrency.MainActor(unsafe) public var __selectedMonth: Swift.Int {
     @objc get
   }
-  public var selectedYear: Swift.Int? {
+  @_Concurrency.MainActor(unsafe) public var selectedYear: Swift.Int? {
     get
   }
-  @objc(selectedYear) public var __selectedYear: Swift.Int {
+  @objc(selectedYear) @_Concurrency.MainActor(unsafe) public var __selectedYear: Swift.Int {
     @objc get
   }
-  public var dateSeparatorTextColor: UIKit.UIColor?
-  @objc public var expirationMonthAccessibilityElement: OmiseSDK.CardExpiryDateTextField.InfoAccessibilityElement! {
+  @_Concurrency.MainActor(unsafe) public var dateSeparatorTextColor: UIKit.UIColor?
+  @objc @_Concurrency.MainActor(unsafe) public var expirationMonthAccessibilityElement: OmiseSDK.CardExpiryDateTextField.InfoAccessibilityElement! {
     get
   }
-  @objc public var expirationYearAccessibilityElement: OmiseSDK.CardExpiryDateTextField.InfoAccessibilityElement! {
+  @objc @_Concurrency.MainActor(unsafe) public var expirationYearAccessibilityElement: OmiseSDK.CardExpiryDateTextField.InfoAccessibilityElement! {
     get
   }
-  @objc override dynamic public var keyboardType: UIKit.UIKeyboardType {
-    @objc get
-    @objc set
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public var keyboardType: UIKit.UIKeyboardType {
+    @_Concurrency.MainActor(unsafe) @objc get
+    @_Concurrency.MainActor(unsafe) @objc set
   }
   @available(iOS, unavailable)
-  @objc override dynamic public var delegate: UIKit.UITextFieldDelegate? {
-    @objc get
-    @objc set
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public var delegate: UIKit.UITextFieldDelegate? {
+    @_Concurrency.MainActor(unsafe) @objc get
+    @_Concurrency.MainActor(unsafe) @objc set
   }
   @objc dynamic public init()
-  @objc override dynamic public init(frame: CoreGraphics.CGRect)
-  @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
-  @objc override dynamic public var accessibilityElements: [Any]? {
-    @objc get
-    @objc set
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame: CoreGraphics.CGRect)
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public var accessibilityElements: [Any]? {
+    @_Concurrency.MainActor(unsafe) @objc get
+    @_Concurrency.MainActor(unsafe) @objc set
   }
-  @objc override public func validate() throws
-  @objc override dynamic public func deleteBackward()
-  @objc override dynamic public func replace(_ range: UIKit.UITextRange, withText text: Swift.String)
-  @objc override dynamic public func paste(_ sender: Any?)
-  @objc override dynamic public func layoutSubviews()
+  @_Concurrency.MainActor(unsafe) @objc override public func validate() throws
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func deleteBackward()
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func replace(_ range: UIKit.UITextRange, withText text: Swift.String)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func paste(_ sender: Any?)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func layoutSubviews()
   @objc deinit
 }
-extension CardExpiryDateTextField {
-  @objc @_hasMissingDesignatedInitializers public class InfoAccessibilityElement : UIKit.UIAccessibilityElement {
+extension OmiseSDK.CardExpiryDateTextField {
+  @objc @_hasMissingDesignatedInitializers @_Concurrency.MainActor(unsafe) public class InfoAccessibilityElement : UIKit.UIAccessibilityElement {
     @objc override dynamic public func accessibilityIncrement()
     @objc override dynamic public func accessibilityDecrement()
     @objc deinit
-    @objc override dynamic public init(accessibilityContainer container: Any)
-    @objc override dynamic public init()
   }
 }
-extension CardExpiryDateTextField : UIKit.UITextFieldDelegate {
-  @objc dynamic public func textField(_ textField: UIKit.UITextField, shouldChangeCharactersIn range: Foundation.NSRange, replacementString string: Swift.String) -> Swift.Bool
+extension OmiseSDK.CardExpiryDateTextField : UIKit.UITextFieldDelegate {
+  @_Concurrency.MainActor(unsafe) @objc dynamic public func textField(_ textField: UIKit.UITextField, shouldChangeCharactersIn range: Foundation.NSRange, replacementString string: Swift.String) -> Swift.Bool
 }
-@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @objc(OMSCardNameTextField) @IBDesignable public class CardNameTextField : OmiseSDK.OmiseTextField {
-  override public var isValid: Swift.Bool {
-    get
+@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @IBDesignable @objc(OMSCardNameTextField) @_Concurrency.MainActor(unsafe) public class CardNameTextField : OmiseSDK.OmiseTextField {
+  @_Concurrency.MainActor(unsafe) override public var isValid: Swift.Bool {
+    @_Concurrency.MainActor(unsafe) get
   }
-  @objc override dynamic public init(frame: CoreGraphics.CGRect)
-  @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame: CoreGraphics.CGRect)
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
   @objc deinit
 }
-@objc(OMSAuthorizingPaymentViewControllerDelegate) public protocol AuthorizingPaymentViewControllerDelegate : AnyObject {
+@objc(OMSAuthorizingPaymentViewControllerDelegate) public protocol AuthorizingPaymentViewControllerDelegate {
   @objc func authorizingPaymentViewController(_ viewController: OmiseSDK.AuthorizingPaymentViewController, didCompleteAuthorizingPaymentWithRedirectedURL redirectedURL: Foundation.URL)
   @objc func authorizingPaymentViewControllerDidCancel(_ viewController: OmiseSDK.AuthorizingPaymentViewController)
   @objc @available(*, unavailable, renamed: "authorizingPaymentViewController(_:didCompleteAuthorizingPaymentWithRedirectedURL:)")
@@ -654,44 +687,44 @@ public typealias Omise3DSViewControllerDelegate = OmiseSDK.AuthorizingPaymentVie
 public typealias OmiseAuthorizingPaymentViewController = OmiseSDK.AuthorizingPaymentViewController
 @available(*, deprecated, renamed: "AuthorizingPaymentViewControllerDelegate")
 public typealias OmiseAuthorizingPaymentViewControllerDelegate = OmiseSDK.AuthorizingPaymentViewControllerDelegate
-@_inheritsConvenienceInitializers @objc(OMSAuthorizingPaymentViewController) public class AuthorizingPaymentViewController : UIKit.UIViewController {
-  public var authorizedURL: Foundation.URL? {
+@_inheritsConvenienceInitializers @objc(OMSAuthorizingPaymentViewController) @_Concurrency.MainActor(unsafe) public class AuthorizingPaymentViewController : UIKit.UIViewController {
+  @_Concurrency.MainActor(unsafe) public var authorizedURL: Foundation.URL? {
     get
     set
   }
-  public var expectedReturnURLPatterns: [Foundation.URLComponents]
-  weak public var delegate: OmiseSDK.AuthorizingPaymentViewControllerDelegate?
-  @objc(authorizingPaymentViewControllerNavigationWithAuthorizedURL:expectedReturnURLPatterns:delegate:) public static func makeAuthorizingPaymentViewControllerNavigationWithAuthorizedURL(_ authorizedURL: Foundation.URL, expectedReturnURLPatterns: [Foundation.URLComponents], delegate: OmiseSDK.AuthorizingPaymentViewControllerDelegate) -> UIKit.UINavigationController
+  @_Concurrency.MainActor(unsafe) public var expectedReturnURLPatterns: [Foundation.URLComponents]
+  @_Concurrency.MainActor(unsafe) weak public var delegate: OmiseSDK.AuthorizingPaymentViewControllerDelegate?
+  @objc(authorizingPaymentViewControllerNavigationWithAuthorizedURL:expectedReturnURLPatterns:delegate:) @_Concurrency.MainActor(unsafe) public static func makeAuthorizingPaymentViewControllerNavigationWithAuthorizedURL(_ authorizedURL: Foundation.URL, expectedReturnURLPatterns: [Foundation.URLComponents], delegate: OmiseSDK.AuthorizingPaymentViewControllerDelegate) -> UIKit.UINavigationController
   @available(*, deprecated, renamed: "makeAuthorizingPaymentViewControllerNavigationWithAuthorizedURL(_:expectedReturnURLPatterns:delegate:)", message: "Please use the new method that confrom to Objective-C convention +[AuthorizingPaymentViewController authorizingPaymentViewControllerNavigationWithAuthorizedURL:expectedReturnURLPatterns:delegate:] as of this method will be removed in the future release.")
-  @objc(makeAuthorizingPaymentViewControllerNavigationWithAuthorizedURL:expectedReturnURLPatterns:delegate:) public static func __makeAuthorizingPaymentViewControllerNavigationWithAuthorizedURL(_ authorizedURL: Foundation.URL, expectedReturnURLPatterns: [Foundation.URLComponents], delegate: OmiseSDK.AuthorizingPaymentViewControllerDelegate) -> UIKit.UINavigationController
-  @objc(authorizingPaymentViewControllerWithAuthorizedURL:expectedReturnURLPatterns:delegate:) public static func makeAuthorizingPaymentViewControllerWithAuthorizedURL(_ authorizedURL: Foundation.URL, expectedReturnURLPatterns: [Foundation.URLComponents], delegate: OmiseSDK.AuthorizingPaymentViewControllerDelegate) -> OmiseSDK.AuthorizingPaymentViewController
+  @objc(makeAuthorizingPaymentViewControllerNavigationWithAuthorizedURL:expectedReturnURLPatterns:delegate:) @_Concurrency.MainActor(unsafe) public static func __makeAuthorizingPaymentViewControllerNavigationWithAuthorizedURL(_ authorizedURL: Foundation.URL, expectedReturnURLPatterns: [Foundation.URLComponents], delegate: OmiseSDK.AuthorizingPaymentViewControllerDelegate) -> UIKit.UINavigationController
+  @objc(authorizingPaymentViewControllerWithAuthorizedURL:expectedReturnURLPatterns:delegate:) @_Concurrency.MainActor(unsafe) public static func makeAuthorizingPaymentViewControllerWithAuthorizedURL(_ authorizedURL: Foundation.URL, expectedReturnURLPatterns: [Foundation.URLComponents], delegate: OmiseSDK.AuthorizingPaymentViewControllerDelegate) -> OmiseSDK.AuthorizingPaymentViewController
   @available(*, deprecated, renamed: "makeAuthorizingPaymentViewControllerWithAuthorizedURL(_:expectedReturnURLPatterns:delegate:)", message: "Please use the new method that confrom to Objective-C convention +[AuthorizingPaymentViewController authorizingPaymentViewControllernWithAuthorizedURL:expectedReturnURLPatterns:delegate:] as of this method will be removed in the future release.")
-  @objc(makeAuthorizingPaymentViewControllerWithAuthorizedURL:expectedReturnURLPatterns:delegate:) public static func __makeAuthorizingPaymentViewControllerWithAuthorizedURL(_ authorizedURL: Foundation.URL, expectedReturnURLPatterns: [Foundation.URLComponents], delegate: OmiseSDK.AuthorizingPaymentViewControllerDelegate) -> OmiseSDK.AuthorizingPaymentViewController
-  @objc override dynamic public func loadView()
-  @objc override dynamic public func viewDidLoad()
-  @objc override dynamic public func viewDidAppear(_ animated: Swift.Bool)
+  @objc(makeAuthorizingPaymentViewControllerWithAuthorizedURL:expectedReturnURLPatterns:delegate:) @_Concurrency.MainActor(unsafe) public static func __makeAuthorizingPaymentViewControllerWithAuthorizedURL(_ authorizedURL: Foundation.URL, expectedReturnURLPatterns: [Foundation.URLComponents], delegate: OmiseSDK.AuthorizingPaymentViewControllerDelegate) -> OmiseSDK.AuthorizingPaymentViewController
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func loadView()
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func viewDidLoad()
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func viewDidAppear(_ animated: Swift.Bool)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(nibName nibNameOrNil: Swift.String?, bundle nibBundleOrNil: Foundation.Bundle?)
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder: Foundation.NSCoder)
   @objc deinit
-  @objc override dynamic public init(nibName nibNameOrNil: Swift.String?, bundle nibBundleOrNil: Foundation.Bundle?)
-  @objc required dynamic public init?(coder: Foundation.NSCoder)
 }
-extension AuthorizingPaymentViewController : WebKit.WKNavigationDelegate {
-  @objc dynamic public func webView(_ webView: WebKit.WKWebView, decidePolicyFor navigationAction: WebKit.WKNavigationAction, decisionHandler: @escaping (WebKit.WKNavigationActionPolicy) -> Swift.Void)
+extension OmiseSDK.AuthorizingPaymentViewController : WebKit.WKNavigationDelegate {
+  @_Concurrency.MainActor(unsafe) @objc dynamic public func webView(_ webView: WebKit.WKWebView, decidePolicyFor navigationAction: WebKit.WKNavigationAction, decisionHandler: @escaping (WebKit.WKNavigationActionPolicy) -> Swift.Void)
 }
-extension AuthorizingPaymentViewController : WebKit.WKUIDelegate {
-  @objc dynamic public func webView(_ webView: WebKit.WKWebView, runJavaScriptAlertPanelWithMessage message: Swift.String, initiatedByFrame frame: WebKit.WKFrameInfo, completionHandler: @escaping () -> Swift.Void)
-  @objc dynamic public func webView(_ webView: WebKit.WKWebView, runJavaScriptConfirmPanelWithMessage message: Swift.String, initiatedByFrame frame: WebKit.WKFrameInfo, completionHandler: @escaping (Swift.Bool) -> Swift.Void)
-  @objc dynamic public func webView(_ webView: WebKit.WKWebView, runJavaScriptTextInputPanelWithPrompt prompt: Swift.String, defaultText: Swift.String?, initiatedByFrame frame: WebKit.WKFrameInfo, completionHandler: @escaping (Swift.String?) -> Swift.Void)
+extension OmiseSDK.AuthorizingPaymentViewController : WebKit.WKUIDelegate {
+  @_Concurrency.MainActor(unsafe) @objc dynamic public func webView(_ webView: WebKit.WKWebView, runJavaScriptAlertPanelWithMessage message: Swift.String, initiatedByFrame frame: WebKit.WKFrameInfo, completionHandler: @escaping () -> Swift.Void)
+  @_Concurrency.MainActor(unsafe) @objc dynamic public func webView(_ webView: WebKit.WKWebView, runJavaScriptConfirmPanelWithMessage message: Swift.String, initiatedByFrame frame: WebKit.WKFrameInfo, completionHandler: @escaping (Swift.Bool) -> Swift.Void)
+  @_Concurrency.MainActor(unsafe) @objc dynamic public func webView(_ webView: WebKit.WKWebView, runJavaScriptTextInputPanelWithPrompt prompt: Swift.String, defaultText: Swift.String?, initiatedByFrame frame: WebKit.WKFrameInfo, completionHandler: @escaping (Swift.String?) -> Swift.Void)
 }
-extension Client {
+extension OmiseSDK.Client {
   @available(*, deprecated, renamed: "init(publicKey:queue:)")
   @objc convenience dynamic public init(publicKey: Swift.String, queue: Foundation.OperationQueue, session: Foundation.URLSession)
-  @objc(sendTokenRequest:callback:) dynamic public func __sendRequest(_ request: OmiseSDK.__OMSTokenRequest, callback: ((OmiseSDK.__OmiseToken?, Foundation.NSError?) -> ())?)
+  @objc(sendTokenRequest:callback:) dynamic public func __sendRequest(_ request: OmiseSDK.__OMSTokenRequest, callback: ((OmiseSDK.__OmiseToken?, Foundation.NSError?) -> Swift.Void)?)
   @objc(sendTokenRequest:delegate:) dynamic public func __sendRequest(_ request: OmiseSDK.__OMSTokenRequest, delegate: OmiseSDK.OMSTokenRequestDelegate?)
   @available(*, deprecated, renamed: "sendTokenRequest(_:completionHandler:)", message: "Please use the new -[OMSClient sendTokenRequest:callback:] method")
-  @objc(sendRequest:callback:) dynamic public func ___sendRequest(_ request: OmiseSDK.__OMSTokenRequest, callback: ((OmiseSDK.__OmiseToken?, Foundation.NSError?) -> ())?)
+  @objc(sendRequest:callback:) dynamic public func ___sendRequest(_ request: OmiseSDK.__OMSTokenRequest, callback: ((OmiseSDK.__OmiseToken?, Foundation.NSError?) -> Swift.Void)?)
   @available(*, deprecated, renamed: "sendTokenRequest(_:completionHandler:)", message: "Please use the new -[OMSClient sendTokenRequest:callback:] method")
   @objc(sendRequest:delegate:) dynamic public func ___sendRequest(_ request: OmiseSDK.__OMSTokenRequest, delegate: OmiseSDK.OMSTokenRequestDelegate?)
-  @objc(sendSourceRequest:callback:) dynamic public func __sendRequest(_ request: OmiseSDK.__OMSSourceRequest, callback: ((OmiseSDK.__OmiseSource?, Foundation.NSError?) -> ())?)
+  @objc(sendSourceRequest:callback:) dynamic public func __sendRequest(_ request: OmiseSDK.__OMSSourceRequest, callback: ((OmiseSDK.__OmiseSource?, Foundation.NSError?) -> Swift.Void)?)
   @objc(sendSourceRequest:delegate:) dynamic public func __sendRequest(_ request: OmiseSDK.__OMSSourceRequest, delegate: OmiseSDK.OMSSourceRequestDelegate?)
   @objc(capabilityDataWithCompletionHandler:) dynamic public func __capabilityDataWithCompletionHandler(_ completionHandler: ((OmiseSDK.__OmiseCapability?, Foundation.NSError?) -> Swift.Void)?)
 }
@@ -701,21 +734,21 @@ public struct Request<T> where T : OmiseSDK.CreatableObject {
   public let parameter: T.CreateParameter
   public init(parameter: T.CreateParameter)
 }
-@_inheritsConvenienceInitializers @objc(OMSCardExpiryDatePicker) public class CardExpiryDatePicker : UIKit.UIPickerView {
-  public var onDateSelected: ((Swift.Int, Swift.Int) -> ())?
-  public var month: Swift.Int
-  public var year: Swift.Int
-  @objc override dynamic public init(frame: CoreGraphics.CGRect)
-  @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
+@_inheritsConvenienceInitializers @objc(OMSCardExpiryDatePicker) @_Concurrency.MainActor(unsafe) public class CardExpiryDatePicker : UIKit.UIPickerView {
+  @_Concurrency.MainActor(unsafe) public var onDateSelected: ((_ month: Swift.Int, _ year: Swift.Int) -> Swift.Void)?
+  @_Concurrency.MainActor(unsafe) public var month: Swift.Int
+  @_Concurrency.MainActor(unsafe) public var year: Swift.Int
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame: CoreGraphics.CGRect)
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
   @objc deinit
 }
-extension CardExpiryDatePicker : UIKit.UIPickerViewDataSource {
-  @objc dynamic public func numberOfComponents(in pickerView: UIKit.UIPickerView) -> Swift.Int
-  @objc dynamic public func pickerView(_ pickerView: UIKit.UIPickerView, numberOfRowsInComponent component: Swift.Int) -> Swift.Int
+extension OmiseSDK.CardExpiryDatePicker : UIKit.UIPickerViewDataSource {
+  @_Concurrency.MainActor(unsafe) @objc dynamic public func numberOfComponents(in pickerView: UIKit.UIPickerView) -> Swift.Int
+  @_Concurrency.MainActor(unsafe) @objc dynamic public func pickerView(_ pickerView: UIKit.UIPickerView, numberOfRowsInComponent component: Swift.Int) -> Swift.Int
 }
-extension CardExpiryDatePicker : UIKit.UIPickerViewDelegate {
-  @objc dynamic public func pickerView(_ pickerView: UIKit.UIPickerView, titleForRow row: Swift.Int, forComponent component: Swift.Int) -> Swift.String?
-  @objc dynamic public func pickerView(_ pickerView: UIKit.UIPickerView, didSelectRow row: Swift.Int, inComponent component: Swift.Int)
+extension OmiseSDK.CardExpiryDatePicker : UIKit.UIPickerViewDelegate {
+  @_Concurrency.MainActor(unsafe) @objc dynamic public func pickerView(_ pickerView: UIKit.UIPickerView, titleForRow row: Swift.Int, forComponent component: Swift.Int) -> Swift.String?
+  @_Concurrency.MainActor(unsafe) @objc dynamic public func pickerView(_ pickerView: UIKit.UIPickerView, didSelectRow row: Swift.Int, inComponent component: Swift.Int)
 }
 @_hasMissingDesignatedInitializers @objc(OMSSource) public class __OmiseSource : ObjectiveC.NSObject {
   @objc public var object: Swift.String {
@@ -746,17 +779,30 @@ extension CardExpiryDatePicker : UIKit.UIPickerViewDelegate {
     @objc get
     @objc set
   }
-  @objc override dynamic public init()
   @objc deinit
 }
 @_hasMissingDesignatedInitializers @objc(OMSPaymentInformation) @objcMembers public class __SourcePaymentInformation : ObjectiveC.NSObject {
   @objc final public let type: OmiseSDK.OMSSourceTypeValue
   @objc public static let alipayPayment: OmiseSDK.__SourcePaymentInformation
+  @objc public static let alipayCNPayment: OmiseSDK.__SourcePaymentInformation
+  @objc public static let alipayHKPayment: OmiseSDK.__SourcePaymentInformation
+  @objc public static let danaPayment: OmiseSDK.__SourcePaymentInformation
+  @objc public static let gcashPayment: OmiseSDK.__SourcePaymentInformation
+  @objc public static let kakaoPayPayment: OmiseSDK.__SourcePaymentInformation
+  @objc public static let touchNGoPayment: OmiseSDK.__SourcePaymentInformation
   @objc public static let tescoLotusBillPaymentPayment: OmiseSDK.__SourcePaymentInformation
   @objc public static let promptPayPayment: OmiseSDK.__SourcePaymentInformation
   @objc public static let payNowPayment: OmiseSDK.__SourcePaymentInformation
+  @objc public static let rabbitLinepayPayment: OmiseSDK.__SourcePaymentInformation
+  @objc public static let ocbcPaoPayment: OmiseSDK.__SourcePaymentInformation
+  @objc public static let grabPayPayment: OmiseSDK.__SourcePaymentInformation
+  @objc public static let boostPayment: OmiseSDK.__SourcePaymentInformation
+  @objc public static let shopeePayPayment: OmiseSDK.__SourcePaymentInformation
+  @objc public static let shopeePayJumpAppPayment: OmiseSDK.__SourcePaymentInformation
+  @objc public static let maybankQRPayPayment: OmiseSDK.__SourcePaymentInformation
+  @objc public static let duitNowQRPayment: OmiseSDK.__SourcePaymentInformation
+  @objc public static let duitNowOBWPayment: OmiseSDK.__SourcePaymentInformation
   @objc deinit
-  @objc override dynamic public init()
 }
 @_inheritsConvenienceInitializers @objc(OMSInternetBankingPaymentInformation) @objcMembers public class __SourceInternetBankingPayment : OmiseSDK.__SourcePaymentInformation {
   @objc public static let bayInternetBankingPayment: OmiseSDK.__SourceInternetBankingPayment
@@ -783,9 +829,13 @@ extension CardExpiryDatePicker : UIKit.UIPickerViewDelegate {
   @objc public static func installmentBAYPayment(withNumberOfTerms numberOfTerms: Swift.Int) -> OmiseSDK.__SourceInstallmentsPayment
   @objc public static func installmentFirstChoicePayment(withNumberOfTerms numberOfTerms: Swift.Int) -> OmiseSDK.__SourceInstallmentsPayment
   @objc public static func installmentBBLPayment(withNumberOfTerms numberOfTerms: Swift.Int) -> OmiseSDK.__SourceInstallmentsPayment
+  @objc public static func installmentMBBPayment(withNumberOfTerms numberOfTerms: Swift.Int) -> OmiseSDK.__SourceInstallmentsPayment
   @objc public static func installmentKTCPayment(withNumberOfTerms numberOfTerms: Swift.Int) -> OmiseSDK.__SourceInstallmentsPayment
   @objc public static func installmentKBankPayment(withNumberOfTerms numberOfTerms: Swift.Int) -> OmiseSDK.__SourceInstallmentsPayment
   @objc public static func installmentSCBPayment(withNumberOfTerms numberOfTerms: Swift.Int) -> OmiseSDK.__SourceInstallmentsPayment
+  @objc public static func installmentCitiPayment(withNumberOfTerms numberOfTerms: Swift.Int) -> OmiseSDK.__SourceInstallmentsPayment
+  @objc public static func installmentTTBPayment(withNumberOfTerms numberOfTerms: Swift.Int) -> OmiseSDK.__SourceInstallmentsPayment
+  @objc public static func installmentUOBPayment(withNumberOfTerms numberOfTerms: Swift.Int) -> OmiseSDK.__SourceInstallmentsPayment
   @objc deinit
 }
 @_hasMissingDesignatedInitializers @objc(OMSEContextPaymentInformation) @objcMembers public class __SourceEContextPayment : OmiseSDK.__SourcePaymentInformation {
@@ -807,7 +857,21 @@ extension CardExpiryDatePicker : UIKit.UIPickerViewDelegate {
 }
 @_inheritsConvenienceInitializers @objc(OMSMobileBankingPaymentInformation) @objcMembers public class __SourceMobileBankingPayment : OmiseSDK.__SourcePaymentInformation {
   @objc public static let scbMobileBankingPayment: OmiseSDK.__SourceMobileBankingPayment
+  @objc public static let kbankMobileBankingPayment: OmiseSDK.__SourceMobileBankingPayment
+  @objc public static let bayMobileBankingPayment: OmiseSDK.__SourceMobileBankingPayment
+  @objc public static let bblMobileBankingPayment: OmiseSDK.__SourceMobileBankingPayment
   @objc public init?(type: OmiseSDK.OMSSourceTypeValue)
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers @objc(OMSFPXPaymentInformation) @objcMembers public class __SourceFPXPayment : OmiseSDK.__SourcePaymentInformation {
+  @objc final public let bank: Swift.String
+  @objc final public let email: Swift.String?
+  @objc public init(bank: Swift.String, email: Swift.String?)
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers @objc(OMSDuitNowOBWPaymentInformation) @objcMembers public class __SourceDuitNowOBWPayment : OmiseSDK.__SourcePaymentInformation {
+  @objc final public let bank: Swift.String
+  @objc public init(bank: Swift.String)
   @objc deinit
 }
 @_hasMissingDesignatedInitializers @objc(OMSCustomPaymentInformation) @objcMembers public class __CustomSourcePayment : OmiseSDK.__SourcePaymentInformation {
@@ -815,24 +879,24 @@ extension CardExpiryDatePicker : UIKit.UIPickerViewDelegate {
   @objc public init(customType: Swift.String, parameters: [Swift.String : Any])
   @objc deinit
 }
-@_inheritsConvenienceInitializers @objc(OMSCardCVVTextField) @IBDesignable public class CardCVVTextField : OmiseSDK.OmiseTextField {
+@_inheritsConvenienceInitializers @IBDesignable @objc(OMSCardCVVTextField) @_Concurrency.MainActor(unsafe) public class CardCVVTextField : OmiseSDK.OmiseTextField {
   @available(iOS, unavailable)
-  @objc override dynamic public var delegate: UIKit.UITextFieldDelegate? {
-    @objc get
-    @objc set
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public var delegate: UIKit.UITextFieldDelegate? {
+    @_Concurrency.MainActor(unsafe) @objc get
+    @_Concurrency.MainActor(unsafe) @objc set
   }
-  @objc override dynamic public var keyboardType: UIKit.UIKeyboardType {
-    @objc get
-    @objc set
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public var keyboardType: UIKit.UIKeyboardType {
+    @_Concurrency.MainActor(unsafe) @objc get
+    @_Concurrency.MainActor(unsafe) @objc set
   }
-  @objc override dynamic public init(frame: CoreGraphics.CGRect)
-  @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame: CoreGraphics.CGRect)
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
   @objc dynamic public init()
-  @objc override public func validate() throws
+  @_Concurrency.MainActor(unsafe) @objc override public func validate() throws
   @objc deinit
 }
-extension CardCVVTextField : UIKit.UITextFieldDelegate {
-  @objc dynamic public func textField(_ textField: UIKit.UITextField, shouldChangeCharactersIn range: Foundation.NSRange, replacementString string: Swift.String) -> Swift.Bool
+extension OmiseSDK.CardCVVTextField : UIKit.UITextFieldDelegate {
+  @_Concurrency.MainActor(unsafe) @objc dynamic public func textField(_ textField: UIKit.UITextField, shouldChangeCharactersIn range: Foundation.NSRange, replacementString string: Swift.String) -> Swift.Bool
 }
 public struct CreateTokenParameter : Swift.Encodable {
   public let name: Swift.String
@@ -856,8 +920,8 @@ public enum ChargeStatus : Swift.String, Swift.Codable {
   case pending
   case reversed
   case successful
-  public typealias RawValue = Swift.String
   public init?(rawValue: Swift.String)
+  public typealias RawValue = Swift.String
   public var rawValue: Swift.String {
     get
   }
@@ -894,31 +958,26 @@ public struct Card : Swift.Decodable {
   public let object: Swift.String
   public init(from decoder: Swift.Decoder) throws
 }
-extension Calendar {
+extension Foundation.Calendar {
   public static let creditCardInformationCalendar: Foundation.Calendar
   public static let validExpirationMonthRange: Swift.Range<Swift.Int>
 }
-extension NSCalendar {
+extension Foundation.NSCalendar {
   @objc(creditCardInformationCalendar) public static var __creditCardInformationCalendar: Foundation.Calendar {
     @objc get
   }
 }
-extension Request where T == OmiseSDK.Token {
+extension OmiseSDK.Request where T == OmiseSDK.Token {
   public init(name: Swift.String, pan: OmiseSDK.PAN, expirationMonth: Swift.Int, expirationYear: Swift.Int, securityCode: Swift.String, city: Swift.String? = nil, postalCode: Swift.String? = nil)
   public init(name: Swift.String, number: Swift.String, expirationMonth: Swift.Int, expirationYear: Swift.Int, securityCode: Swift.String, city: Swift.String? = nil, postalCode: Swift.String? = nil)
 }
-extension Optional where Wrapped == Swift.String {
+extension Swift.Optional where Wrapped == Swift.String {
   public var isNilOrEmpty: Swift.Bool {
     get
   }
 }
-extension UIControl.State : Swift.Hashable {
-  public var hashValue: Swift.Int {
-    get
-  }
-}
-extension Bundle {
-  public static let omiseSDKBundle: Foundation.Bundle
+extension UIKit.UIControl.State : Swift.Hashable {
+  public func hash(into hasher: inout Swift.Hasher)
 }
 @_hasMissingDesignatedInitializers @objc(OMSCapability) public class __OmiseCapability : ObjectiveC.NSObject {
   @objc public var location: Swift.String {
@@ -937,7 +996,6 @@ extension Bundle {
     @objc get
     @objc set
   }
-  @objc override dynamic public init()
   @objc deinit
 }
 @_hasMissingDesignatedInitializers @objc(OMSCapabilityBackend) public class __OmiseCapabilityBackend : ObjectiveC.NSObject {
@@ -949,22 +1007,19 @@ extension Bundle {
     @objc get
     @objc set
   }
-  @objc override dynamic public init()
   @objc deinit
 }
 @_inheritsConvenienceInitializers @objc(OMSCapabilityBackendPayment) public class __OmiseCapabilityBackendPayment : ObjectiveC.NSObject {
-  @objc deinit
   @objc override dynamic public init()
+  @objc deinit
 }
 @_hasMissingDesignatedInitializers @objc(OMSCapabilityCardBackend) public class __OmiseCapabilityCardBackendPayment : OmiseSDK.__OmiseCapabilityBackendPayment {
   @objc final public let supportedBrands: Swift.Set<Swift.String>
   @objc deinit
-  @objc override dynamic public init()
 }
 @_hasMissingDesignatedInitializers @objc(OMSCapabilitySourceBackend) public class __OmiseCapabilitySourceBackendPayment : OmiseSDK.__OmiseCapabilityBackendPayment {
   @objc final public let type: OmiseSDK.OMSSourceTypeValue
   @objc deinit
-  @objc override dynamic public init()
 }
 @_hasMissingDesignatedInitializers @objc(OMSCapabilityInstallmentBackend) public class __OmiseCapabilityInstallmentBackendPayment : OmiseSDK.__OmiseCapabilitySourceBackendPayment {
   @objc final public let availableNumberOfTerms: Foundation.IndexSet
@@ -1001,13 +1056,13 @@ public enum Currency : Swift.Codable, Swift.Hashable {
   public init(code: Swift.String)
   public func convert(fromSubunit value: Swift.Int64) -> Swift.Double
   public func convert(toSubunit value: Swift.Double) -> Swift.Int64
+  public func hash(into hasher: inout Swift.Hasher)
+  public static func == (a: OmiseSDK.Currency, b: OmiseSDK.Currency) -> Swift.Bool
   public var hashValue: Swift.Int {
     get
   }
-  public func hash(into hasher: inout Swift.Hasher)
-  public static func == (a: OmiseSDK.Currency, b: OmiseSDK.Currency) -> Swift.Bool
 }
-extension Currency {
+extension OmiseSDK.Currency {
   public func encode(to encoder: Swift.Encoder) throws
   public init(from decoder: Swift.Decoder) throws
 }
@@ -1030,73 +1085,75 @@ public protocol PaymentChooserUI : AnyObject {
   var preferredPrimaryColor: UIKit.UIColor? { get set }
   var preferredSecondaryColor: UIKit.UIColor? { get set }
 }
-@_inheritsConvenienceInitializers @objc(OMSPaymentCreatorController) public class PaymentCreatorController : UIKit.UINavigationController {
-  @objc public var publicKey: Swift.String? {
+@_inheritsConvenienceInitializers @objc(OMSPaymentCreatorController) @_Concurrency.MainActor(unsafe) public class PaymentCreatorController : UIKit.UINavigationController {
+  @objc @_Concurrency.MainActor(unsafe) public var publicKey: Swift.String? {
     @objc get
     @objc set
   }
-  public var paymentAmount: Swift.Int64? {
+  @_Concurrency.MainActor(unsafe) public var paymentAmount: Swift.Int64? {
     get
     set
   }
-  public var paymentCurrency: OmiseSDK.Currency? {
+  @_Concurrency.MainActor(unsafe) public var paymentCurrency: OmiseSDK.Currency? {
     get
     set
   }
-  @objc(paymentAmount) public var __paymentAmount: Swift.Int64 {
+  @objc(paymentAmount) @_Concurrency.MainActor(unsafe) public var __paymentAmount: Swift.Int64 {
     @objc get
     @objc set
   }
-  @objc(paymentCurrencyCode) public var __paymentCurrencyCode: Swift.String? {
+  @objc(paymentCurrencyCode) @_Concurrency.MainActor(unsafe) public var __paymentCurrencyCode: Swift.String? {
     @objc get
     @objc set
   }
-  @objc public var showsCreditCardPayment: Swift.Bool {
+  @objc @_Concurrency.MainActor(unsafe) public var showsCreditCardPayment: Swift.Bool {
     @objc get
     @objc set
   }
-  @objc public var allowedPaymentMethods: [OmiseSDK.OMSSourceTypeValue] {
+  @objc @_Concurrency.MainActor(unsafe) public var allowedPaymentMethods: [OmiseSDK.OMSSourceTypeValue] {
     @objc get
     @objc set
   }
-  @objc public var handleErrors: Swift.Bool
-  weak public var paymentDelegate: OmiseSDK.PaymentCreatorControllerDelegate?
-  @objc(paymentDelegate) weak public var __paymentDelegate: OmiseSDK.OMSPaymentCreatorControllerDelegate?
-  @objc @IBInspectable public var preferredPrimaryColor: UIKit.UIColor?
-  @objc @IBInspectable public var preferredSecondaryColor: UIKit.UIColor? {
+  @objc @_Concurrency.MainActor(unsafe) public var handleErrors: Swift.Bool
+  @_Concurrency.MainActor(unsafe) weak public var paymentDelegate: OmiseSDK.PaymentCreatorControllerDelegate?
+  @objc(paymentDelegate) @_Concurrency.MainActor(unsafe) weak public var __paymentDelegate: OmiseSDK.OMSPaymentCreatorControllerDelegate?
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) public var preferredPrimaryColor: UIKit.UIColor?
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) public var preferredSecondaryColor: UIKit.UIColor? {
     @objc get
     @objc set
   }
-  public static func makePaymentCreatorControllerWith(publicKey: Swift.String, amount: Swift.Int64, currency: OmiseSDK.Currency, allowedPaymentMethods: [OmiseSDK.OMSSourceTypeValue], paymentDelegate: OmiseSDK.PaymentCreatorControllerDelegate?) -> OmiseSDK.PaymentCreatorController
-  @objc(paymentCreatorControllerWithPublicKey:amount:currency:allowedPaymentMethods:paymentDelegate:) public static func __makePaymentCreatorViewControllerWith(publicKey: Swift.String, amount: Swift.Int64, currencyCode: Swift.String, allowedPaymentMethods: [OmiseSDK.OMSSourceTypeValue], paymentDelegate: OmiseSDK.OMSPaymentCreatorControllerDelegate) -> OmiseSDK.PaymentCreatorController
+  @_Concurrency.MainActor(unsafe) public static func makePaymentCreatorControllerWith(publicKey: Swift.String, amount: Swift.Int64, currency: OmiseSDK.Currency, allowedPaymentMethods: [OmiseSDK.OMSSourceTypeValue], paymentDelegate: OmiseSDK.PaymentCreatorControllerDelegate?) -> OmiseSDK.PaymentCreatorController
+  @objc(paymentCreatorControllerWithPublicKey:amount:currency:allowedPaymentMethods:paymentDelegate:) @_Concurrency.MainActor(unsafe) public static func __makePaymentCreatorViewControllerWith(publicKey: Swift.String, amount: Swift.Int64, currencyCode: Swift.String, allowedPaymentMethods: [OmiseSDK.OMSSourceTypeValue], paymentDelegate: OmiseSDK.OMSPaymentCreatorControllerDelegate) -> OmiseSDK.PaymentCreatorController
   @objc dynamic public init()
   @available(iOS, unavailable)
-  @objc override dynamic public init(rootViewController: UIKit.UIViewController)
-  @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
-  @objc override dynamic public init(nibName nibNameOrNil: Swift.String?, bundle nibBundleOrNil: Foundation.Bundle?)
-  @objc override dynamic public init(navigationBarClass: Swift.AnyClass?, toolbarClass: Swift.AnyClass?)
-  @objc override dynamic public var viewControllers: [UIKit.UIViewController] {
-    @objc get
-    @objc set
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(rootViewController: UIKit.UIViewController)
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(nibName nibNameOrNil: Swift.String?, bundle nibBundleOrNil: Foundation.Bundle?)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(navigationBarClass: Swift.AnyClass?, toolbarClass: Swift.AnyClass?)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public var viewControllers: [UIKit.UIViewController] {
+    @_Concurrency.MainActor(unsafe) @objc get
+    @_Concurrency.MainActor(unsafe) @objc set
   }
-  public func applyPaymentMethods(from capability: OmiseSDK.Capability)
-  @objc(applyPaymentMethodsFrom:) public func __applyPaymentMethods(from capability: OmiseSDK.__OmiseCapability)
-  @objc dynamic public func displayErrorWith(title: Swift.String, message: Swift.String?, animated: Swift.Bool, sender: Any?)
-  @objc override dynamic public func pushViewController(_ viewController: UIKit.UIViewController, animated: Swift.Bool)
-  @objc override dynamic public func addChild(_ childController: UIKit.UIViewController)
-  @objc override dynamic public func loadView()
-  @objc override dynamic public func viewWillTransition(to size: CoreGraphics.CGSize, with coordinator: UIKit.UIViewControllerTransitionCoordinator)
+  @_Concurrency.MainActor(unsafe) public func applyPaymentMethods(from capability: OmiseSDK.Capability)
+  @objc(applyPaymentMethodsFrom:) @_Concurrency.MainActor(unsafe) public func __applyPaymentMethods(from capability: OmiseSDK.__OmiseCapability)
+  @_Concurrency.MainActor(unsafe) @objc dynamic public func displayErrorWith(title: Swift.String, message: Swift.String?, animated: Swift.Bool, sender: Any?)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func pushViewController(_ viewController: UIKit.UIViewController, animated: Swift.Bool)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func popViewController(animated: Swift.Bool) -> UIKit.UIViewController?
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func addChild(_ childController: UIKit.UIViewController)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func loadView()
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func viewWillTransition(to size: CoreGraphics.CGSize, with coordinator: UIKit.UIViewControllerTransitionCoordinator)
   @objc deinit
 }
-extension PaymentCreatorController {
-  public static let thailandDefaultAvailableSourceMethods: [OmiseSDK.OMSSourceTypeValue]
-  public static let japanDefaultAvailableSourceMethods: [OmiseSDK.OMSSourceTypeValue]
-  public static let singaporeDefaultAvailableSourceMethods: [OmiseSDK.OMSSourceTypeValue]
-  public static let internetBankingAvailablePaymentMethods: [OmiseSDK.OMSSourceTypeValue]
-  public static let installmentsBankingAvailablePaymentMethods: [OmiseSDK.OMSSourceTypeValue]
-  public static let billPaymentAvailablePaymentMethods: [OmiseSDK.OMSSourceTypeValue]
-  public static let barcodeAvailablePaymentMethods: [OmiseSDK.OMSSourceTypeValue]
-  public static let mobileBankingAvailablePaymentMethods: [OmiseSDK.OMSSourceTypeValue]
+extension OmiseSDK.PaymentCreatorController {
+  @_Concurrency.MainActor(unsafe) public static let thailandDefaultAvailableSourceMethods: [OmiseSDK.OMSSourceTypeValue]
+  @_Concurrency.MainActor(unsafe) public static let japanDefaultAvailableSourceMethods: [OmiseSDK.OMSSourceTypeValue]
+  @_Concurrency.MainActor(unsafe) public static let singaporeDefaultAvailableSourceMethods: [OmiseSDK.OMSSourceTypeValue]
+  @_Concurrency.MainActor(unsafe) public static let malaysiaDefaultAvailableSourceMethods: [OmiseSDK.OMSSourceTypeValue]
+  @_Concurrency.MainActor(unsafe) public static let internetBankingAvailablePaymentMethods: [OmiseSDK.OMSSourceTypeValue]
+  @_Concurrency.MainActor(unsafe) public static let installmentsBankingAvailablePaymentMethods: [OmiseSDK.OMSSourceTypeValue]
+  @_Concurrency.MainActor(unsafe) public static let billPaymentAvailablePaymentMethods: [OmiseSDK.OMSSourceTypeValue]
+  @_Concurrency.MainActor(unsafe) public static let barcodeAvailablePaymentMethods: [OmiseSDK.OMSSourceTypeValue]
+  @_Concurrency.MainActor(unsafe) public static let mobileBankingAvailablePaymentMethods: [OmiseSDK.OMSSourceTypeValue]
 }
 public protocol Object : Swift.Decodable {
   var object: Swift.String { get }
@@ -1113,38 +1170,39 @@ public protocol CreatableObject : OmiseSDK.Object {
   @discardableResult
   public func send<T>(_ request: OmiseSDK.Request<T>, completionHandler: OmiseSDK.Request<T>.Callback?) -> OmiseSDK.RequestTask<T> where T : OmiseSDK.CreatableObject
   public func capabilityDataWithCompletionHandler(_ completionHandler: ((OmiseSDK.RequestResult<OmiseSDK.Capability>) -> Swift.Void)?)
-  @objc override dynamic public init()
+  public func retrieveChargeStatusWithCompletionHandler(from tokenID: Swift.String, completionHandler: @escaping ((Swift.Result<OmiseSDK.ChargeStatus, Swift.Error>) -> Swift.Void))
+  public func pollingChargeStatusWithCompletionHandler(from tokenID: Swift.String, completionHandler: @escaping (Swift.Result<OmiseSDK.ChargeStatus, Swift.Error>) -> Swift.Void)
   @objc deinit
 }
-@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @objc(OMSCardNumberTextField) @IBDesignable public class CardNumberTextField : OmiseSDK.OmiseTextField {
-  public var pan: OmiseSDK.PAN {
+@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @IBDesignable @objc(OMSCardNumberTextField) @_Concurrency.MainActor(unsafe) public class CardNumberTextField : OmiseSDK.OmiseTextField {
+  @_Concurrency.MainActor(unsafe) public var pan: OmiseSDK.PAN {
     get
   }
-  public var cardBrand: OmiseSDK.CardBrand? {
+  @_Concurrency.MainActor(unsafe) public var cardBrand: OmiseSDK.CardBrand? {
     get
   }
-  @objc override dynamic public var tokenizer: UIKit.UITextInputTokenizer {
-    @objc get
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public var tokenizer: UIKit.UITextInputTokenizer {
+    @_Concurrency.MainActor(unsafe) @objc get
   }
-  @objc override dynamic public var selectedTextRange: UIKit.UITextRange? {
-    @objc get
-    @objc set
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public var selectedTextRange: UIKit.UITextRange? {
+    @_Concurrency.MainActor(unsafe) @objc get
+    @_Concurrency.MainActor(unsafe) @objc set
   }
   @available(iOS, unavailable)
-  @objc override dynamic public var delegate: UIKit.UITextFieldDelegate? {
-    @objc get
-    @objc set
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public var delegate: UIKit.UITextFieldDelegate? {
+    @_Concurrency.MainActor(unsafe) @objc get
+    @_Concurrency.MainActor(unsafe) @objc set
   }
-  @objc override dynamic public init(frame: CoreGraphics.CGRect)
-  @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
-  @objc override public func validate() throws
-  @objc override dynamic public func becomeFirstResponder() -> Swift.Bool
-  @objc override dynamic public func resignFirstResponder() -> Swift.Bool
-  @objc override dynamic public func paste(_ sender: Any?)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame: CoreGraphics.CGRect)
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
+  @_Concurrency.MainActor(unsafe) @objc override public func validate() throws
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func becomeFirstResponder() -> Swift.Bool
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func resignFirstResponder() -> Swift.Bool
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func paste(_ sender: Any?)
   @objc deinit
 }
-extension CardNumberTextField : UIKit.UITextFieldDelegate {
-  @objc dynamic public func textField(_ textField: UIKit.UITextField, shouldChangeCharactersIn range: Foundation.NSRange, replacementString string: Swift.String) -> Swift.Bool
+extension OmiseSDK.CardNumberTextField : UIKit.UITextFieldDelegate {
+  @_Concurrency.MainActor(unsafe) @objc dynamic public func textField(_ textField: UIKit.UITextField, shouldChangeCharactersIn range: Foundation.NSRange, replacementString string: Swift.String) -> Swift.Bool
 }
 public protocol PaymentMethod : Swift.Decodable, Swift.Encodable, Swift.Equatable {
   static var paymentMethodTypePrefix: Swift.String { get }
@@ -1162,6 +1220,12 @@ public enum PaymentInformation : Swift.Codable, Swift.Equatable {
   }
   case internetBanking(OmiseSDK.PaymentInformation.InternetBanking)
   case alipay
+  case alipayCN
+  case alipayHK
+  case dana
+  case gcash
+  case kakaoPay
+  case touchNGo
   public enum BillPayment : OmiseSDK.PaymentMethod {
     public static let paymentMethodTypePrefix: Swift.String
     case tescoLotus
@@ -1184,14 +1248,19 @@ public enum PaymentInformation : Swift.Codable, Swift.Equatable {
       case bay
       case firstChoice
       case bbl
+      case mbb
       case ktc
       case kBank
       case scb
+      case citi
+      case ttb
+      case uob
       case other(Swift.String)
       public static func == (a: OmiseSDK.PaymentInformation.Installment.Brand, b: OmiseSDK.PaymentInformation.Installment.Brand) -> Swift.Bool
     }
     public let brand: OmiseSDK.PaymentInformation.Installment.Brand
     public let numberOfTerms: Swift.Int
+    public init(brand: OmiseSDK.PaymentInformation.Installment.Brand, numberOfTerms: Swift.Int)
     public static func == (a: OmiseSDK.PaymentInformation.Installment, b: OmiseSDK.PaymentInformation.Installment) -> Swift.Bool
   }
   case installment(OmiseSDK.PaymentInformation.Installment)
@@ -1202,9 +1271,9 @@ public enum PaymentInformation : Swift.Codable, Swift.Equatable {
     public let email: Swift.String
     public let phoneNumber: Swift.String
     public init(name: Swift.String, email: Swift.String, phoneNumber: Swift.String)
-    public init(from decoder: Swift.Decoder) throws
-    public func encode(to encoder: Swift.Encoder) throws
     public static func == (a: OmiseSDK.PaymentInformation.EContext, b: OmiseSDK.PaymentInformation.EContext) -> Swift.Bool
+    public func encode(to encoder: Swift.Encoder) throws
+    public init(from decoder: Swift.Decoder) throws
   }
   case eContext(OmiseSDK.PaymentInformation.EContext)
   case promptpay
@@ -1214,9 +1283,9 @@ public enum PaymentInformation : Swift.Codable, Swift.Equatable {
     public var type: Swift.String
     public let phoneNumber: Swift.String
     public init(phoneNumber: Swift.String)
-    public init(from decoder: Swift.Decoder) throws
     public static func == (a: OmiseSDK.PaymentInformation.TrueMoney, b: OmiseSDK.PaymentInformation.TrueMoney) -> Swift.Bool
     public func encode(to encoder: Swift.Encoder) throws
+    public init(from decoder: Swift.Decoder) throws
   }
   case truemoney(OmiseSDK.PaymentInformation.TrueMoney)
   public enum Points : OmiseSDK.PaymentMethod {
@@ -1229,25 +1298,79 @@ public enum PaymentInformation : Swift.Codable, Swift.Equatable {
   public enum MobileBanking : OmiseSDK.PaymentMethod {
     public static let paymentMethodTypePrefix: Swift.String
     case scb
+    case kbank
+    case bay
+    case bbl
     case other(Swift.String)
     public static func == (a: OmiseSDK.PaymentInformation.MobileBanking, b: OmiseSDK.PaymentInformation.MobileBanking) -> Swift.Bool
   }
   case mobileBanking(OmiseSDK.PaymentInformation.MobileBanking)
+  public struct FPX : OmiseSDK.PaymentMethod {
+    public static var paymentMethodTypePrefix: Swift.String
+    public var type: Swift.String
+    public let bank: Swift.String
+    public let email: Swift.String?
+    public init(bank: Swift.String, email: Swift.String?)
+    public static func == (a: OmiseSDK.PaymentInformation.FPX, b: OmiseSDK.PaymentInformation.FPX) -> Swift.Bool
+    public func encode(to encoder: Swift.Encoder) throws
+    public init(from decoder: Swift.Decoder) throws
+  }
+  case fpx(OmiseSDK.PaymentInformation.FPX)
+  case rabbitLinepay
+  case ocbcPao
+  case boost
+  case shopeePay
+  case shopeePayJumpApp
+  case maybankQRPay
+  case duitNowQR
+  public struct DuitNowOBW : OmiseSDK.PaymentMethod {
+    public static var paymentMethodTypePrefix: Swift.String
+    public var type: Swift.String
+    public enum Bank : Swift.Equatable {
+      case affin
+      case alliance
+      case agro
+      case ambank
+      case cimb
+      case islam
+      case rakyat
+      case muamalat
+      case bsn
+      case hongleong
+      case hsbc
+      case kfh
+      case maybank2u
+      case ocbc
+      case publicBank
+      case rhb
+      case sc
+      case uob
+      case other(Swift.String)
+      public static func == (a: OmiseSDK.PaymentInformation.DuitNowOBW.Bank, b: OmiseSDK.PaymentInformation.DuitNowOBW.Bank) -> Swift.Bool
+    }
+    public let bank: Swift.String
+    public init(bank: Swift.String)
+    public static func == (a: OmiseSDK.PaymentInformation.DuitNowOBW, b: OmiseSDK.PaymentInformation.DuitNowOBW) -> Swift.Bool
+    public func encode(to encoder: Swift.Encoder) throws
+    public init(from decoder: Swift.Decoder) throws
+  }
+  case duitNowOBW(OmiseSDK.PaymentInformation.DuitNowOBW)
+  case grabPay
   case other(type: Swift.String, parameters: [Swift.String : Any])
   public init(from decoder: Swift.Decoder) throws
   public func encode(to encoder: Swift.Encoder) throws
   public static func == (lhs: OmiseSDK.PaymentInformation, rhs: OmiseSDK.PaymentInformation) -> Swift.Bool
 }
-extension Request where T == OmiseSDK.Source {
+extension OmiseSDK.Request where T == OmiseSDK.Source {
   public init(paymentInformation: OmiseSDK.PaymentInformation, amount: Swift.Int64, currency: OmiseSDK.Currency)
 }
-extension PaymentInformation {
+extension OmiseSDK.PaymentInformation {
   public var sourceType: Swift.String {
     get
   }
 }
-extension PaymentInformation.InternetBanking : Swift.CaseIterable, Swift.CustomStringConvertible {
-  public typealias AllCases = Swift.Array<OmiseSDK.PaymentInformation.InternetBanking>
+extension OmiseSDK.PaymentInformation.InternetBanking : Swift.CaseIterable, Swift.CustomStringConvertible {
+  public typealias AllCases = [OmiseSDK.PaymentInformation.InternetBanking]
   public static var allCases: OmiseSDK.PaymentInformation.InternetBanking.AllCases
   public var type: Swift.String {
     get
@@ -1258,15 +1381,15 @@ extension PaymentInformation.InternetBanking : Swift.CaseIterable, Swift.CustomS
   public init(from decoder: Swift.Decoder) throws
   public func encode(to encoder: Swift.Encoder) throws
 }
-extension PaymentInformation.Installment {
+extension OmiseSDK.PaymentInformation.Installment {
   public var type: Swift.String {
     get
   }
   public init(from decoder: Swift.Decoder) throws
   public func encode(to encoder: Swift.Encoder) throws
 }
-extension PaymentInformation.Installment.Brand : Swift.CaseIterable, Swift.CustomStringConvertible {
-  public typealias AllCases = Swift.Array<OmiseSDK.PaymentInformation.Installment.Brand>
+extension OmiseSDK.PaymentInformation.Installment.Brand : Swift.CaseIterable, Swift.CustomStringConvertible {
+  public typealias AllCases = [OmiseSDK.PaymentInformation.Installment.Brand]
   public static var allCases: OmiseSDK.PaymentInformation.Installment.Brand.AllCases
   public var description: Swift.String {
     get
@@ -1275,23 +1398,23 @@ extension PaymentInformation.Installment.Brand : Swift.CaseIterable, Swift.Custo
     get
   }
 }
-extension PaymentInformation.BillPayment {
+extension OmiseSDK.PaymentInformation.BillPayment {
   public var type: Swift.String {
     get
   }
   public init(from decoder: Swift.Decoder) throws
   public func encode(to encoder: Swift.Encoder) throws
 }
-extension PaymentInformation.Barcode {
+extension OmiseSDK.PaymentInformation.Barcode {
   public struct AlipayBarcode : Swift.Codable, Swift.Equatable {
     public let barcode: Swift.String
     public struct StoreInformation : Swift.Codable, Swift.Equatable {
       public let storeID: Swift.String
       public let storeName: Swift.String
       public init(storeID: Swift.String, storeName: Swift.String)
-      public init(from decoder: Swift.Decoder) throws
-      public func encode(to encoder: Swift.Encoder) throws
       public static func == (a: OmiseSDK.PaymentInformation.Barcode.AlipayBarcode.StoreInformation, b: OmiseSDK.PaymentInformation.Barcode.AlipayBarcode.StoreInformation) -> Swift.Bool
+      public func encode(to encoder: Swift.Encoder) throws
+      public init(from decoder: Swift.Decoder) throws
     }
     public let storeInformation: OmiseSDK.PaymentInformation.Barcode.AlipayBarcode.StoreInformation?
     public var storeID: Swift.String? {
@@ -1311,15 +1434,15 @@ extension PaymentInformation.Barcode {
   public func encode(to encoder: Swift.Encoder) throws
   public static func == (lhs: OmiseSDK.PaymentInformation.Barcode, rhs: OmiseSDK.PaymentInformation.Barcode) -> Swift.Bool
 }
-extension PaymentInformation.Points {
+extension OmiseSDK.PaymentInformation.Points {
   public var type: Swift.String {
     get
   }
   public init(from decoder: Swift.Decoder) throws
   public func encode(to encoder: Swift.Encoder) throws
 }
-extension PaymentInformation.MobileBanking : Swift.CaseIterable, Swift.CustomStringConvertible {
-  public typealias AllCases = Swift.Array<OmiseSDK.PaymentInformation.MobileBanking>
+extension OmiseSDK.PaymentInformation.MobileBanking : Swift.CaseIterable, Swift.CustomStringConvertible {
+  public typealias AllCases = [OmiseSDK.PaymentInformation.MobileBanking]
   public static var allCases: OmiseSDK.PaymentInformation.MobileBanking.AllCases
   public var type: Swift.String {
     get
@@ -1330,6 +1453,13 @@ extension PaymentInformation.MobileBanking : Swift.CaseIterable, Swift.CustomStr
   public init(from decoder: Swift.Decoder) throws
   public func encode(to encoder: Swift.Encoder) throws
 }
+extension OmiseSDK.PaymentInformation.DuitNowOBW.Bank : Swift.CaseIterable, Swift.CustomStringConvertible {
+  public typealias AllCases = [OmiseSDK.PaymentInformation.DuitNowOBW.Bank]
+  public static var allCases: OmiseSDK.PaymentInformation.DuitNowOBW.Bank.AllCases
+  public var description: Swift.String {
+    get
+  }
+}
 @_inheritsConvenienceInitializers @objc(OMSCardNumber) final public class CardNumber : ObjectiveC.NSObject {
   @objc public static func normalize(_ pan: Swift.String) -> Swift.String
   public static func brand(of pan: Swift.String) -> OmiseSDK.CardBrand?
@@ -1337,8 +1467,8 @@ extension PaymentInformation.MobileBanking : Swift.CaseIterable, Swift.CustomStr
   @objc public static func format(_ pan: Swift.String) -> Swift.String
   @objc public static func luhn(_ pan: Swift.String) -> Swift.Bool
   @objc public static func validate(_ pan: Swift.String) -> Swift.Bool
-  @objc deinit
   @objc override dynamic public init()
+  @objc deinit
 }
 @objc(OMSCardBrand) public enum CardBrand : Swift.Int, Swift.CustomStringConvertible, Swift.Codable {
   case visa
@@ -1361,17 +1491,17 @@ extension PaymentInformation.MobileBanking : Swift.CaseIterable, Swift.CustomStr
   }
   public func encode(to encoder: Swift.Encoder) throws
   public init(from decoder: Swift.Decoder) throws
+  public init?(rawValue: Swift.Int)
   public typealias RawValue = Swift.Int
   public var rawValue: Swift.Int {
     get
   }
-  public init?(rawValue: Swift.Int)
 }
 @_inheritsConvenienceInitializers @objc(OMSCardBrandHelper) final public class __OMSCardBrand : ObjectiveC.NSObject {
   @objc(patternForBrand:) public static func __patternForBrand(brand: OmiseSDK.CardBrand) -> Swift.String
   @objc(validLengthsForBrand:) public static func __validLengthsForBrand(brand: OmiseSDK.CardBrand) -> Foundation.NSRange
-  @objc deinit
   @objc override dynamic public init()
+  @objc deinit
 }
 extension OmiseSDK.ErrorUserInfoKey : Swift.Equatable {}
 extension OmiseSDK.ErrorUserInfoKey : Swift.Hashable {}

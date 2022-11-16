@@ -25,6 +25,12 @@
 /* Class = "UILabel"; text = "Full name"; ObjectID = "aL6-Ey-d8I"; */
 "aL6-Ey-d8I.text" = "ชื่อ-สกุล";
 
+/* Class = "UINavigationItem"; title = "Mobile Banking"; ObjectID = "agh-p8-Mln"; */
+"agh-p8-Mln.title" = "โมบายล์แบงก์กิ้ง";
+
+/* Class = "UILabel"; text = "Mobile Banking"; ObjectID = "drr-nc-RA8"; */
+"drr-nc-RA8.text" = "โมบายล์แบงก์กิ้ง";
+
 /* Class = "UILabel"; text = "Name on card"; ObjectID = "bEE-yU-zna"; */
 "bEE-yU-zna.text" = "ชื่อบนบัตร";
 
@@ -57,6 +63,9 @@
 
 /* Class = "UILabel"; text = "Bank of Ayudhya"; ObjectID = "kUY-b1-dmD"; */
 "kUY-b1-dmD.text" = "ธนาคารกรุงศรีอยุธยา";
+
+/* Class = "UILabel"; text = "Bank of Ayudhya"; ObjectID = "eci-dP-WLC"; */
+"eci-dP-WLC.text" = "KMA";
 
 /* Class = "UILabel"; text = "Tesco Lotus"; ObjectID = "LpC-UH-uPc"; */
 "LpC-UH-uPc.text" = "เทสโก้โลตัส";
@@ -121,8 +130,17 @@
 /* Class = "UILabel"; text = "3-4 digit number on the back of your card"; ObjectID = "yfq-Iv-IBe"; */
 "yfq-Iv-IBe.text" = "หมายเลข CVV ด้านหลังบัตร";
 
-/* Class = "UILabel"; text = "Kasikorn"; ObjectID = "yHg-il-ZhG"; */
+/* Class = "UILabel"; text = "Siam Commercial Bank"; ObjectID = "EQF-26-ssb"; */
+"EQF-26-ssb.text" = "SCB EASY";
+
+/* Class = "UILabel"; text = "Kasikorn Bank"; ObjectID = "yHg-il-ZhG"; */
 "yHg-il-ZhG.text" = "ธนาคารกสิกรไทย";
+
+/* Class = "UILabel"; text = "Kasikorn Bank"; ObjectID = "bDJ-ih-QYr"; */
+"bDJ-ih-QYr.text" = "K PLUS";
+
+/* Class = "UILabel"; text = "Bangkok Bank"; ObjectID = "Hk2-sB-8C8"; */
+"Hk2-sB-8C8.text" = "Bualuang mBanking";
 
 /* Class = "UILabel"; text = "-"; ObjectID = "yQ7-lv-7H1"; */
 "yQ7-lv-7H1.text" = "-";
@@ -159,3 +177,12 @@
 
 /* Class = "UILabel"; text = "PayNow"; ObjectID = "8kj-Ed-2eS"; */
 "8kj-Ed-2eS.text" = "เพย์นาว";
+
+/* Class = "UILabel"; text = "Citibank"; ObjectID = "ZWa-M2-fVM"; */
+"ZWa-M2-fVM.text" = "ธนาคารซิตี้แบงก์";
+
+/* Class = "UILabel"; text = "TMBThanachart Bank"; ObjectID = "NkN-Zz-kdw"; */
+"NkN-Zz-kdw.text" = "ธนาคารทีเอ็มบีธนชาต";
+
+/* Class = "UILabel"; text = "United Overseas Bank"; ObjectID = "pV0-oM-DuD; */
+"pV0-oM-DuD.text" = "ธนาคารยูโอบี";

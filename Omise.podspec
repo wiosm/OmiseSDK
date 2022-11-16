@@ -16,7 +16,7 @@ Pod::Spec.new do |spec|
   #
 
   spec.name         = "Omise"
-  spec.version      = "4.0.1"
+  spec.version      = "4.16.0"
   spec.summary      = "Omise SDK for Cocoapods"
 
   # This description is used to generate tags and improve search results.
